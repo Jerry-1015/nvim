@@ -16,6 +16,7 @@ function Packer:load_plugins()
     local list = {}
     local tmp = vim.split(vim.fn.globpath(modules_dir, '*/plugins.lua'), '\n')
     for _, f in ipairs(tmp) do
+      f = string.gsub(f, '\\', '/')
       list[#list + 1] = string.match(f, 'lua/(.+).lua$')
     end
     return list
@@ -65,6 +66,8 @@ function Packer:init_ensure_plugins()
     end)
     self:load_packer()
     packer.sync()
+  else
+    self:load_packer()
   end
 end
 
