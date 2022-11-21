@@ -1,44 +1,40 @@
-local keymap = require('core.keymap')
-local nmap, imap, cmap, xmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.xmap
-local silent, noremap = keymap.silent, keymap.noremap
-local opts = keymap.new_opts
-local cmd = keymap.cmd
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0
+    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
 
--- Use space as leader key
-vim.g.mapleader = ' '
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.smart_tab = function()
+  local cmp = require('cmp')
+  local ok, luasnip = pcall(require, 'luasnip')
+  local luasnip_status = false
+  if ok then
+    luasnip_status = luasnip.expand_or_jumpable()
+  end
 
--- leaderkey
-nmap({ ' ', '', opts(noremap) })
-xmap({ ' ', '', opts(noremap) })
+  if cmp.visible() and not luasnip_status then
+    return '<C-n>'
+  elseif luasnip_status then
+    return '<Plug>luasnip-expand-or-jump'
+  elseif has_words_before() then
+    return '<Tab>'
+  else
+    return '<Tab>'
+  end
+end
 
--- usage example
-nmap({
-  -- noremal remap
-  -- close buffer
-  { '<C-x>k', cmd('bdelete'), opts(noremap, silent) },
-  -- save
-  { '<C-s>', cmd('write'), opts(noremap) },
-  -- yank
-  { 'Y', 'y$', opts(noremap) },
-  -- buffer jump
-  { ']b', cmd('bn'), opts(noremap) },
-  { '[b', cmd('bp'), opts(noremap) },
-  -- remove trailing white space
-  { '<Leader>t', cmd('TrimTrailingWhitespace'), opts(noremap) },
-  -- window jump
-  { '<C-h>', '<C-w>h', opts(noremap) },
-  { '<C-l>', '<C-w>l', opts(noremap) },
-  { '<C-j>', '<C-w>j', opts(noremap) },
-  { '<C-k>', '<C-w>k', opts(noremap) },
-})
+_G.smart_shift_tab = function()
+  local cmp = require('cmp')
+  local _, luasnip = pcall(require, 'luasnip')
 
-imap({
-  -- turn to normal mode
-  { 'jk', '<ESC>', opts(noremap) },
-  -- insert mode
-  { '<C-h>', '<Bs>', opts(noremap) },
-  { '<C-e>', '<End>', opts(noremap) },
-})
+  if cmp.visible() then
+    return '<C-p>'
+  elseif luasnip.jumpable(-1) then
+    return "<cmd>lua require'luasnip'.jump(-1)<CR>"
+  else
+    return '<S-Tab>'
+  end
+end
 
--- commandline remap
-cmap({ '<C-b>', '<Left>', opts(noremap) })

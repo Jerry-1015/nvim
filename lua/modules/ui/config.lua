@@ -21,8 +21,24 @@ function config.gruvbox()
   vim.cmd('colorscheme gruvbox')
 end
 
+function config.zephyr()
+  vim.cmd('colorscheme zephyr')
+end
+
 function config.nvim_bufferline()
   require('bufferline').setup({})
+end
+
+function config.galaxyline()
+  require('modules.ui.eviline')
+end
+
+function config.nvim_tree()
+  require('nvim-tree').setup({
+    disable_netrw = false,
+    hijack_cursor = true,
+    hijack_netrw = true,
+  })
 end
 
 return config
