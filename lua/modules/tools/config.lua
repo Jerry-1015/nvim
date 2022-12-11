@@ -2,11 +2,9 @@ local config = {}
 
 function config.nvim_tree()
   require('nvim-tree').setup()
-  vim.notify("enter nvim-tree config", vim.log.levels.INFO)
 end
 
 function config.telescope()
-  vim.notify("enter telescope configuration", vim.log.levels.INFO)
   if not packer_plugins['plenary.nvim'].loaded then
     vim.cmd([[packadd plenary.nvim]])
     vim.cmd([[packadd telescope-fzy-native.nvim]])

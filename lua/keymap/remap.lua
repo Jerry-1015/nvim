@@ -18,6 +18,9 @@ nmap({
   { '<C-w>', cmd('bdelete') },
   -- save
   { '<C-s>', cmd('write') },
+  -- quit
+  { 'q', cmd('q') },
+  { 'Q', cmd('q!') },
   -- buffer jump
   { ']b', cmd('bn') },
   { '[b', cmd('bp') },

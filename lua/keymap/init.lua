@@ -24,6 +24,18 @@ nmap({
   { '<Leader>li', cmd('LspInfo') },
   { '<Leader>ll', cmd('LspInfo') },
   { '<Leader>lr', cmd('LspInfo') },
+  -- Lspsaga
+  { '[e', cmd('Lspsaga diagnostic_jump_next') },
+  { ']e', cmd('Lspsaga diagnostic_jump_prev') },
+  { '[c', cmd('Lspsaga show_cursor_diagnostics') },
+  { 'K', cmd('Lspsaga hover_doc') },
+  { 'ga', cmd('Lspsaga code_action') },
+  { 'gd', cmd('Lspsaga peek_definition') },
+  { 'gs', cmd('Lspsaga signature_help') },
+  { 'gr', cmd('Lspsaga rename') },
+  { 'gh', cmd('Lspsaga lsp_finder') },
+  { '<Leader>o', cmd('LSoutlineToggle') },
+  { '<Leader>g', cmd('Lspsaga open_floaterm lazygit') },
   -- dashboard
   { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
   { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },

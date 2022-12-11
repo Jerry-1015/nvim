@@ -1,7 +1,6 @@
 local helper = {}
 local home = string.gsub(os.getenv('LOCALAPPDATA'), '\\', '/')
 
-
 function helper.get_config_path()
   local config = home .. '/nvim'
   return config

@@ -10,9 +10,16 @@ plugin({ 'glepnir/zephyr-nvim', config = conf.zephyr })
 plugin({ 'akinsho/nvim-bufferline.lua', tag = "v3.*", config = conf.nvim_bufferline, requires = 'nvim-tree/nvim-web-devicons' })
 
 -- statusline
-plugin({ 'glepnir/galaxyline.nvim',
+plugin({
+  'glepnir/galaxyline.nvim',
   branch = 'main',
   config = conf.galaxyline,
   requires = 'nvim-tree/nvim-web-devicons',
 })
+
+-- plugin({
+--   'nvim-lualine/lualine.nvim',
+--   config = conf.lualine,
+--   requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+-- })
 

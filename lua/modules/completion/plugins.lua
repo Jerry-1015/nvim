@@ -9,6 +9,8 @@ plugin({
   config = conf.nvim_lsp,
 })
 
+plugin({ 'glepnir/lspsaga.nvim', conf = conf.lspsaga, branch = 'main' })
+
 plugin({ 'williamboman/mason.nvim', config = conf.mason })
 
 plugin({

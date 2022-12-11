@@ -33,6 +33,10 @@ function config.galaxyline()
   require('modules.ui.eviline')
 end
 
+function config.lualine()
+  require('lualine').setup()
+end
+
 function config.nvim_tree()
   require('nvim-tree').setup({
     disable_netrw = false,
