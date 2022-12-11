@@ -31,11 +31,10 @@ nmap({
   { 'K', cmd('Lspsaga hover_doc') },
   { 'ga', cmd('Lspsaga code_action') },
   { 'gd', cmd('Lspsaga peek_definition') },
-  { 'gs', cmd('Lspsaga signature_help') },
   { 'gr', cmd('Lspsaga rename') },
   { 'gh', cmd('Lspsaga lsp_finder') },
   { '<Leader>o', cmd('LSoutlineToggle') },
-  { '<Leader>g', cmd('Lspsaga open_floaterm lazygit') },
+  { '<Leader>g', cmd('Lspsaga open_floaterm pwsh') },
   -- dashboard
   { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
   { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },
@@ -46,4 +45,9 @@ nmap({
   { '<Leader>b', cmd('Telescope buffers'), opts(noremap, silent) },
   { '<Leader>fa', cmd('Telescope live_grep'), opts(noremap, silent) },
   { '<Leader>ff', cmd('Telescope find_files'), opts(noremap, silent) },
+})
+
+tmap({
+  -- Lspsaga floaterm
+  { '<Leader>g', [[<C-\><C-n>:Lspsaga close_floaterm<CR>]] }
 })
