@@ -45,4 +45,15 @@ function config.nvim_tree()
   })
 end
 
+function config.dressing()
+  require('dressing').setup({
+    select = {
+      enabled = true,
+      backend = { 'telescope' },
+      trim_prompt = true,
+      telescope = require('telescope.themes').get_cursor()
+    }
+  })
+end
+
 return config

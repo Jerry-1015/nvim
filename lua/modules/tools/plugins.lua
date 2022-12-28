@@ -13,6 +13,8 @@ plugin({
   },
 })
 
+-- plugin({ 'nvim-telescope/telescope-ui-select.nvim' })
+
 -- nvim-tree
 plugin({ 'nvim-tree/nvim-tree.lua', cmd = 'NvimTreeToggle', config = conf.nvim_tree })
 

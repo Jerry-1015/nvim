@@ -13,8 +13,7 @@ _G.smart_tab = function()
   if ok then
     luasnip_status = luasnip.expand_or_jumpable()
   end
-
-  if cmp.visible() and not luasnip_status then
+  if cmp.visible() then
     return '<C-n>'
   elseif luasnip_status then
     return '<Plug>luasnip-expand-or-jump'
@@ -37,4 +36,38 @@ _G.smart_shift_tab = function()
     return '<S-Tab>'
   end
 end
+
+-- luasnip cycle through choice nodes
+_G.next_choice = function()
+  local ok, luasnip = pcall(require, 'luasnip')
+  if ok and luasnip.choice_active() then
+    return '<Plug>luasnip-next-choice'
+  else
+    return '<C-l>'
+  end
+end
+
+_G.prev_choice = function()
+  local ok, luasnip = pcall(require, 'luasnip')
+  if ok and luasnip.choice_active() then
+    return '<Plug>luasnip-prev-choice'
+  else
+    return '<C-h>'
+  end
+end
+
+-- vim.ui.select for choice nodes
+_G.select_choice = function()
+  local ok, luasnip = pcall(require, 'luasnip')
+  if not luasnip.choice_active() then
+    return '<C-u>'
+  end
+  if not packer_plugins['telescope.nvim'].loaded then
+    vim.cmd([[packadd telescope.nvim]])
+    vim.cmd([[packad dressing.nvim]])
+  end
+
+  return '<cmd>lua require("luasnip.extras.select_choice")()<CR>'
+end
+
 

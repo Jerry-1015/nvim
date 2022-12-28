@@ -1,6 +1,9 @@
 local opt = vim.opt
 local cache_dir = require('core.helper').get_cache_path() .. '/'
 
+opt.splitbelow = true
+opt.splitright = true
+
 opt.termguicolors = true
 opt.hidden = true
 opt.magic = true

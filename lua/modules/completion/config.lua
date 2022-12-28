@@ -31,8 +31,8 @@ function config.nvim_cmp()
       fields = { 'abbr', 'kind', 'menu' },
     },
     mapping = cmp.mapping.preset.insert({
-      ['<C-e>'] = cmp.config.disable,
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ["<C-e>"] = cmp.mapping.disable,
+      ["<CR>"] = cmp.mapping.confirm { select = true }
     }),
     snippet = {
       expand = function(args)
@@ -55,6 +55,7 @@ function config.lua_snip()
     history = true,
     enable_autosnippets = true,
     updateevents = 'TextChanged,TextChangedI',
+    store_selection_keys = "<Tab>",
     ext_opts = {
       [types.choiceNode] = {
         active = {
@@ -64,10 +65,6 @@ function config.lua_snip()
     },
   })
   require('luasnip.loaders.from_lua').lazy_load({ paths = vim.fn.stdpath('config') .. '/snippets' })
-  require('luasnip.loaders.from_vscode').lazy_load()
-  require('luasnip.loaders.from_vscode').lazy_load({
-    paths = { './snippets/' },
-  })
 end
 
 function config.auto_pairs()

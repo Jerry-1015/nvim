@@ -17,6 +17,9 @@ plugin({
   requires = 'nvim-tree/nvim-web-devicons',
 })
 
+-- vim.ui
+plugin({ 'stevearc/dressing.nvim', config = conf.dressing, after = 'telescope.nvim' })
+
 -- plugin({
 --   'nvim-lualine/lualine.nvim',
 --   config = conf.lualine,

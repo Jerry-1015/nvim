@@ -20,14 +20,25 @@ function config.telescope()
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     },
+    pickers = {
+      find_files = {
+        theme = 'cursor'
+      }
+    },
     extensions = {
       fzy_native = {
         override_generic_sorter = false,
         override_file_sorter = true,
       },
+      ["ui-select"] = {
+        require("telescope.themes").get_cursor {
+
+        }
+      },
     },
   })
   require('telescope').load_extension('fzy_native')
+  require('telescope').load_extension('ui-select')
 end
 
 return config

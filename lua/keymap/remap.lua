@@ -34,6 +34,8 @@ nmap({
   -- resize window
   { '<A-[>', cmd('vertical resize -5') },
   { '<A-]>', cmd('vertical resize +5') },
+  { '<A-,>', cmd('resize -5') },
+  { '<A-.>', cmd('resize +5') },
 })
 
 -- insertmode remap
@@ -41,15 +43,7 @@ imap({
   -- turn to normal mode
   { 'jk', '<ESC>', opts(noremap) },
   -- insert mode
-  { '<C-w>', '<C-[>diwa' },
-  { '<C-h>', '<Bs>' },
-  { '<C-d>', '<Del>' },
-  { '<C-u>', '<C-G>u<C-u>' },
-  { '<C-b>', '<Left>' },
-  { '<C-f>', '<Right>' },
   { '<C-a>', '<Esc>^i' },
-  { '<C-j>', '<Esc>o' },
-  { '<C-k>', '<Esc>O' },
   { '<C-s>', '<ESC>:w<CR>' },
   {
     '<C-e>',

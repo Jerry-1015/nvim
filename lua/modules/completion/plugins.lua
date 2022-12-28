@@ -11,7 +11,7 @@ plugin({
 
 plugin({ 'glepnir/lspsaga.nvim', conf = conf.lspsaga, branch = 'main' })
 
-plugin({ 'williamboman/mason.nvim', config = conf.mason })
+-- plugin({ 'williamboman/mason.nvim', cmd = 'Mason', config = conf.mason })
 
 plugin({
   'hrsh7th/nvim-cmp',
@@ -28,3 +28,5 @@ plugin({
 plugin({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })
 
 plugin({ 'windwp/nvim-autopairs', event = 'InsertEnter', config = conf.auto_pairs })
+
+
