@@ -1,7 +1,7 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2022/12/28 21:19:34
+-- @last modified   2022/12/28 23:21:12
 ---------------------------------------------
 
 -- add search path
@@ -24,6 +24,7 @@ local rep = require('luasnip.extras').rep
 local cs = ls.cs
 local ac = ls.ac
 
+
 -- don't work if remove
 ls.snippets = {}
 ls.autosnippets = {}
@@ -41,6 +42,7 @@ local function auto_update_time()
     end
   end
 end
+
 
 ac("BufWritePre", auto_update_time)
 

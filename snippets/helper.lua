@@ -1,7 +1,7 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2022/12/28 13:38:28
+-- @last modified   2022/12/28 22:54:15
 ---------------------------------------------
 
 local ls = {}
@@ -19,6 +19,7 @@ ls.sn = luasnip.snippet_node
 
 ls.fmt = require('luasnip.extras.fmt').fmt
 ls.rep = require('luasnip.extras').rep
+
 
 ls.snippets = {}
 ls.autosnippets = {}

@@ -1,7 +1,7 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2022/12/28 21:21:45
+-- @last modified   2022/12/28 22:03:06
 ---------------------------------------------
 
 package.path = package.path .. ";" .. vim.fn.stdpath('config') .. '/snippets/?.lua'
