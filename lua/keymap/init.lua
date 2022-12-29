@@ -45,6 +45,7 @@ nmap({
   { 'K', cmd('Lspsaga hover_doc') },
   { 'ga', cmd('Lspsaga code_action') },
   { 'gd', cmd('Lspsaga peek_definition') },
+  { 'gs', cmd('Lspsaga signature_help') },
   { 'gr', cmd('Lspsaga rename') },
   { 'gh', cmd('Lspsaga lsp_finder') },
   { '<Leader>o', cmd('Lspsaga outline') },
@@ -53,12 +54,21 @@ nmap({
   { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
   { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },
   { '<Leader>sl', cmd('SessionLoad'), opts(noremap, silent) },
-  -- nvimtree
-  { '<Leader>e', cmd('NvimTreeToggle'), opts(noremap, silent) },
   -- Telescope
+  { '<Leader>e',
+  function()
+    vim.cmd('Telescope file_browser')
+    local esc_key = vim.api.nvim_replace_termcodes('<Esc>', true, false, true)
+    vim.api.nvim_feedkeys(esc_key, 'n', false)
+  end },
   { '<Leader>b', cmd('Telescope buffers'), opts(noremap, silent) },
-  { '<Leader>fa', cmd('Telescope live_grep'), opts(noremap, silent) },
-  { '<Leader>ff', cmd('Telescope find_files'), opts(noremap, silent) },
+  { '<Leader>ff', cmd('Telescope find_files find_command = rg, --ignore, --hideen, --files'), opts(noremap, silent) },
+  { '<Leader>fg', cmd('Telescope git_files'), opts(noremap, silent) },
+  { '<Leader>fw', cmd('Telescope grep_string'), opts(noremap, silent) },
+  { '<Leader>fh', cmd('Telescope help_tags'), opts(noremap, silent) },
+  { '<Leader>fo', cmd('Telescope old_files'), opts(noremap, silent) },
+  { '<Leader>fc', cmd('Telescope git_commits'), opts(noremap, silent) },
+  { '<Leader>fl', cmd('Telescope live_grep'), opts(noremap, silent) },
 })
 
 tmap({

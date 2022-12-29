@@ -7,7 +7,10 @@ end
 
 function config.lspsaga()
   local saga = require('lspsaga')
-  saga.init_lsp_saga()
+  saga.init_lsp_saga({
+    finder_request_timeout = 1500,
+    border_style = "rounded"
+  })
 end
 
 function config.mason()

@@ -1,5 +1,5 @@
 local plugin = require('core.pack').register_plugin
-local conf = require('modules.ui.config')
+local conf = require('modules.tools.config')
 
 -- telescop
 plugin({
@@ -8,14 +8,13 @@ plugin({
   cmd = 'Telescope',
   config = conf.telescope,
   requires = {
-    { 'nvim-lua/plenary.nvim' },
+    { 'nvim-lua/plenary.nvim', opt = true },
     { 'nvim-telescope/telescope-fzy-native.nvim', opt = true },
+    { 'nvim-telescope/telescope-file-browser.nvim', opt = true },
   },
 })
 
 -- plugin({ 'nvim-telescope/telescope-ui-select.nvim' })
 
--- nvim-tree
-plugin({ 'nvim-tree/nvim-tree.lua', cmd = 'NvimTreeToggle', config = conf.nvim_tree })
 
 

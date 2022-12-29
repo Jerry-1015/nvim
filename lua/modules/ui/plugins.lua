@@ -17,6 +17,8 @@ plugin({
   requires = 'nvim-tree/nvim-web-devicons',
 })
 
+plugin({ 'glepnir/dashboard-nvim', config = conf.dashboard })
+
 -- vim.ui
 plugin({ 'stevearc/dressing.nvim', config = conf.dressing, after = 'telescope.nvim' })
 

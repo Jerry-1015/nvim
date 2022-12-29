@@ -56,4 +56,52 @@ function config.dressing()
   })
 end
 
+function config.dashboard()
+  local db = require('dashboard')
+  local z = require('zephyr')
+  local home = string.gsub(tostring(os.getenv('LOCALAPPDATA')), '\\', '/')
+  db.session_directory = home .. '/nvim-data/session'
+  db.preview_command = 'pwsh -Command type'
+  db.preview_file_path = home .. '/nvim/static/neovim.cat'
+  db.preview_file_height = 11
+  db.preview_file_width = 70
+  db.custom_center = {
+    {
+      icon = '  ',
+      icon_hl = { fg = z.red },
+      desc = 'Update Plugins                          ',
+      shortcut = 'SPC p u',
+      action = 'PackerUpdate',
+    },
+    {
+      icon = '  ',
+      icon_hl = { fg = z.yellow },
+      desc = 'Recently opened files                   ',
+      action = 'Telescope oldfiles',
+      shortcut = 'SPC f h',
+    },
+    {
+      icon = '  ',
+      icon_hl = { fg = z.cyan },
+      desc = 'Find File                               ',
+      action = 'Telescope find_files',
+      shortcut = 'SPC f f',
+    },
+    {
+      icon = '  ',
+      icon_hl = { fg = z.blue },
+      desc = 'File Browser                            ',
+      action = 'Telescope file_browser',
+      shortcut = 'SPC   e',
+    },
+    {
+      icon = '  ',
+      icon_hl = { fg = z.oragne },
+      desc = 'Find word                               ',
+      action = 'Telescope live_grep',
+      shortcut = 'SPC f l',
+    },
+  }
+end
+
 return config
