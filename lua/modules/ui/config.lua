@@ -78,7 +78,7 @@ function config.dashboard()
       icon_hl = { fg = z.yellow },
       desc = 'Recently opened files                   ',
       action = 'Telescope oldfiles',
-      shortcut = 'SPC f h',
+      shortcut = 'SPC f o',
     },
     {
       icon = '  ',

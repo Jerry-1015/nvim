@@ -66,9 +66,15 @@ nmap({
   { '<Leader>fg', cmd('Telescope git_files'), opts(noremap, silent) },
   { '<Leader>fw', cmd('Telescope grep_string'), opts(noremap, silent) },
   { '<Leader>fh', cmd('Telescope help_tags'), opts(noremap, silent) },
-  { '<Leader>fo', cmd('Telescope old_files'), opts(noremap, silent) },
+  { '<Leader>fo', cmd('Telescope oldfiles'), opts(noremap, silent) },
   { '<Leader>fc', cmd('Telescope git_commits'), opts(noremap, silent) },
   { '<Leader>fl', cmd('Telescope live_grep'), opts(noremap, silent) },
+  -- cmake source
+  { '<Leader><Leader>s', cmd('!cmake -S . -B build'), opts(noremap) },
+  -- cmake build
+  { '<Leader><Leader>b', cmd('!cmake --build build -j2'), opts(noremap) },
+  -- cmake test
+  { '<Leader><Leader>t', cmd('!cmake --build build -j2 --target test'), opts(noremap) },
 })
 
 tmap({
