@@ -1,2 +1,2 @@
-### Neovim Configure
-This is my neovim cofigure referencing by glepnir's.
+### Neovim Configuration
+This is my neovim cofiguration referencing by glepnir's.
