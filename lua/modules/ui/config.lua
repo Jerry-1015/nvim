@@ -61,7 +61,7 @@ function config.dashboard()
   local z = require('zephyr')
   local home = string.gsub(tostring(os.getenv('LOCALAPPDATA')), '\\', '/')
   db.session_directory = home .. '/nvim-data/session'
-  db.preview_command = 'pwsh -Command type'
+  db.preview_command = 'pwsh --noprofile -Command type'
   db.preview_file_path = home .. '/nvim/static/neovim.cat'
   db.preview_file_height = 11
   db.preview_file_width = 70

@@ -15,7 +15,7 @@ function config.telescope()
     defaults = {
       prompt_prefix = '🔭 ',
       layout_config = {
-        horizontal = { prompt_position = 'top', results_width = 0.4 },
+        horizontal = { prompt_position = 'top', results_width = 0.6 },
         vertical = { mirror = false },
       },
       sorting_strategy = 'ascending',
@@ -23,11 +23,11 @@ function config.telescope()
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     },
-    pickers = {
-      find_files = {
-        theme = 'cursor'
-      }
-    },
+   -- pickers = {
+   --   find_files = {
+   --     theme = 'cursor'
+   --   }
+   -- },
     extensions = {
       fzy_native = {
         override_generic_sorter = false,
@@ -44,8 +44,9 @@ function config.telescope()
             ['c'] = fb_actions.create,
             ['r'] = fb_actions.rename,
             ['d'] = fb_actions.remove,
-            ['o'] = fb_actions.open,
+            -- ['o'] = fb_actions.open,
             ['u'] = fb_actions.goto_parent_dir,
+            ['h'] = fb_actions.toggle_hidden,
           }
         }
       },
