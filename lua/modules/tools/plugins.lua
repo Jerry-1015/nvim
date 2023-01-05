@@ -14,6 +14,8 @@ plugin({
   },
 })
 
+plugin({ 'phaazon/hop.nvim', event = 'BufRead', config = conf.hop })
+
 -- plugin({ 'nvim-telescope/telescope-ui-select.nvim' })
 
 

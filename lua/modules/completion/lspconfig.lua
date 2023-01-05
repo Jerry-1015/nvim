@@ -29,15 +29,6 @@ vim.diagnostic.config({
   },
 })
 
--- lspconfig.gopls.setup({
---   cmd = { 'gopls', '--remote=auto' },
---   capabilities = capabilities,
---   init_options = {
---     usePlaceholders = true,
---     completeUnimported = true,
---   },
--- })
-
 lspconfig.sumneko_lua.setup({
   capabilities = capabilities,
   settings = {
@@ -65,39 +56,6 @@ lspconfig.clangd.setup({
   },
 })
 
--- lspconfig.rust_analyzer.setup({
---   capabilities = capabilities,
---   settings = {
---     ['rust-analyzer'] = {
---       imports = {
---         granularity = {
---           group = 'module',
---         },
---         prefix = 'self',
---       },
---       cargo = {
---         buildScripts = {
---           enable = true,
---         },
---       },
---       procMacro = {
---         enable = true,
---       },
---     },
---   },
--- })
--- 
--- local servers = {
---   'dockerls',
---   'pyright',
---   'bashls',
---   'zls',
---   'jsonls',
---   'tsserver',
--- }
--- 
--- for _, server in ipairs(servers) do
---   lspconfig[server].setup({
---     capabilities = capabilities,
---   })
--- end
+lspconfig.cmake.setup{}
+
+lspconfig.pyright.setup{}

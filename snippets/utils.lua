@@ -20,7 +20,6 @@ ls.sn = luasnip.snippet_node
 ls.fmt = require('luasnip.extras.fmt').fmt
 ls.rep = require('luasnip.extras').rep
 
-
 ls.snippets = {}
 ls.autosnippets = {}
 

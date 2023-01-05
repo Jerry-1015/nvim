@@ -26,23 +26,33 @@ function config.zephyr()
 end
 
 function config.nvim_bufferline()
-  require('bufferline').setup({})
+  require('bufferline').setup({
+    options = {
+      diagnostics = "nvim_lsp",
+      always_show_bufferline = false,
+    }
+  })
 end
 
 function config.galaxyline()
   require('modules.ui.eviline')
 end
 
-function config.lualine()
-  require('lualine').setup()
-end
-
-function config.nvim_tree()
-  require('nvim-tree').setup({
-    disable_netrw = false,
-    hijack_cursor = true,
-    hijack_netrw = true,
+function config.lspsaga()
+  local saga = require('lspsaga')
+  saga.init_lsp_saga({
+    finder_request_timeout = 1500,
+    border_style = "rounded",
+    symbol_in_winbar = {
+      in_custom = true,
+      enable = false,
+      show_file = true,
+    },
+    show_outline = {
+      win_width = 40,
+    }
   })
+  require('modules.ui.winbar')
 end
 
 function config.dressing()
@@ -102,6 +112,16 @@ function config.dashboard()
       shortcut = 'SPC f l',
     },
   }
+end
+
+function config.indent_blankline()
+  require('indent_blankline').setup({
+    use_treesitter_scope = true,
+    show_first_indent_level = true,
+    show_current_context = false,
+    show_current_context_start = false,
+    show_current_context_start_on_current_line = false,
+  })
 end
 
 return config

@@ -50,6 +50,7 @@ nmap({
   { 'gh', cmd('Lspsaga lsp_finder') },
   { '<Leader>o', cmd('Lspsaga outline') },
   { '<Leader>g', cmd('Lspsaga open_floaterm pwsh') },
+  { 'fm', 'gg=G<C-o>', opts(noremap, silent) },
   -- dashboard
   { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
   { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },
@@ -61,7 +62,12 @@ nmap({
     local esc_key = vim.api.nvim_replace_termcodes('<Esc>', true, false, true)
     vim.api.nvim_feedkeys(esc_key, 'n', false)
   end },
-  { '<Leader>b', cmd('Telescope buffers'), opts(noremap, silent) },
+  { '<Leader>fb',
+  function()
+    vim.cmd('Telescope buffers')
+    local esc_key = vim.api.nvim_replace_termcodes('<Esc>', true, false, true)
+    vim.api.nvim_feedkeys(esc_key, 'n', false)
+  end, opts(noremap, silent) },
   { '<Leader>ff', cmd('Telescope find_files'), opts(noremap, silent) },
   { '<Leader>fg', cmd('Telescope git_files'), opts(noremap, silent) },
   { '<Leader>fw', cmd('Telescope grep_string'), opts(noremap, silent) },
@@ -71,10 +77,14 @@ nmap({
   { '<Leader>fl', cmd('Telescope live_grep'), opts(noremap, silent) },
   -- cmake source
   { '<Leader><Leader>s', cmd('!cmake -S . -B build'), opts(noremap) },
+  -- { '<Leader><Leader>s', cmd('!cmake -S . -B build -G Ninja'), opts(noremap) },
   -- cmake build
   { '<Leader><Leader>b', cmd('!cmake --build build -j2'), opts(noremap) },
   -- cmake test
   { '<Leader><Leader>t', cmd('!cmake --build build -j2 --target test'), opts(noremap) },
+  -- hop.nvim
+  { 'f', cmd('HopWordAC') },
+  { 'F', cmd('HopWordBC') },
 })
 
 tmap({

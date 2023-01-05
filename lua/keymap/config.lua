@@ -9,16 +9,18 @@ end
 _G.smart_tab = function()
   local cmp = require('cmp')
   local ok, luasnip = pcall(require, 'luasnip')
-  local luasnip_status = false
+  local luasnip_expandable = false
+  local luasnip_jumpable = false
   if ok then
-    luasnip_status = luasnip.expand_or_jumpable()
+    luasnip_expandable = luasnip.expandable()
+    luasnip_jumpable = luasnip.expand_or_jumpable()
   end
-  if cmp.visible() then
+  if cmp.visible() and not luasnip_expandable then
     return '<C-n>'
-  elseif luasnip_status then
+  elseif luasnip_jumpable then
     return '<Plug>luasnip-expand-or-jump'
   elseif has_words_before() then
-    return '<Tab>'
+    return cmp.complete()
   else
     return '<Tab>'
   end
@@ -59,15 +61,30 @@ end
 -- vim.ui.select for choice nodes
 _G.select_choice = function()
   local ok, luasnip = pcall(require, 'luasnip')
-  if not luasnip.choice_active() then
+  if not ok or not luasnip.choice_active() then
     return '<C-u>'
   end
   if not packer_plugins['telescope.nvim'].loaded then
     vim.cmd([[packadd telescope.nvim]])
+    vim.cmd([[packadd plenary.nvim]])
     vim.cmd([[packad dressing.nvim]])
   end
 
   return '<cmd>lua require("luasnip.extras.select_choice")()<CR>'
 end
 
+-- smatr q to quit in different conditions
+_G.smart_q = function()
+  local filetype = vim.bo.filetype
+  if filetype == 'TelescopePrompt' then
+    return '<Esc>'
+  end
+
+  local tabpage_num = #vim.api.nvim_list_wins()
+  if (tabpage_num > 1) then
+    return '<C-w>'
+  end
+
+  return '<cmd>q<CR>'
+end
 

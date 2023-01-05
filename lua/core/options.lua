@@ -1,9 +1,14 @@
 local opt = vim.opt
 local cache_dir = require('core.helper').get_cache_path() .. '/'
 
+-- utf-8
+opt.encoding = "UTF-8"
+opt.fileencoding = "utf-8"
+
 opt.splitbelow = true
 opt.splitright = true
 
+opt.cursorline = true
 opt.termguicolors = true
 opt.hidden = true
 opt.magic = true

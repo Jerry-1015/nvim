@@ -5,16 +5,12 @@ function config.nvim_lsp()
   require('modules.completion.lspconfig')
 end
 
-function config.lspsaga()
-  local saga = require('lspsaga')
-  saga.init_lsp_saga({
-    finder_request_timeout = 1500,
-    border_style = "rounded"
-  })
-end
-
 function config.mason()
   require('mason').setup()
+end
+
+function config.mason_lspconfig()
+  require('mason-lspconfig').setup()
 end
 
 function config.nvim_cmp()
@@ -40,10 +36,27 @@ function config.nvim_cmp()
     },
     sources = {
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
+      { name = 'luasnip', },
       { name = 'path' },
       { name = 'buffer' },
     }
+  })
+  -- / 查找模式使用 buffer 源
+  cmp.setup.cmdline("/", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = "buffer" },
+    },
+  })
+
+  -- : 命令行模式中使用 path 和 cmdline 源.
+  cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "path" },
+    }, {
+      { name = "cmdline" },
+    }),
   })
 end
 
@@ -75,6 +88,10 @@ function config.auto_pairs()
   end
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = ''} }))
+end
+
+function config.nvim_surround()
+  require("nvim-surround").setup({})
 end
 
 return config

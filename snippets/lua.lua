@@ -1,14 +1,14 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2022/12/28 23:21:12
+-- @last modified   2023/1/5 19:43:15
 ---------------------------------------------
 
 -- add search path
 package.path = package.path .. ";" .. vim.fn.stdpath('config') .. '/snippets/?.lua'
 
 -- basic init
-local ls = require("helper")
+local ls = require("utils")
 local s = ls.s --> snippet
 local i = ls.i --> insert node
 local t = ls.t --> text node
@@ -67,5 +67,15 @@ cs("info", fmt([[
     return os.date()
   end),
 }), { auto = true })
+
+cs('function', fmt([[
+function()
+  {}
+end{}
+]],
+{
+  i(1),
+  i(0),
+}))
 
 return ls.snippets, ls.autosnippets

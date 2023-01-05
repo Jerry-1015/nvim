@@ -1,9 +1,11 @@
 local keymap = require('core.keymap')
 local nmap, imap, cmap, tmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.tmap
-local silent, noremap = keymap.silent, keymap.noremap
+local silent, noremap, remap = keymap.silent, keymap.noremap, keymap.remap
 local expr = keymap.expr
 local opts = keymap.new_opts
 local cmd = keymap.cmd
+
+require('keymap.config')
 
 -- Use space as leader key
 vim.g.mapleader = ' '
@@ -19,7 +21,7 @@ nmap({
   -- save
   { '<C-s>', cmd('write') },
   -- quit
-  { 'q', cmd('q') },
+  { 'q', _G.smart_q, opts(expr, remap) },
   { 'Q', cmd('q!') },
   -- buffer jump
   { ']b', cmd('bn') },
@@ -43,6 +45,8 @@ imap({
   -- turn to normal mode
   { 'jk', '<ESC>', opts(noremap) },
   -- insert mode
+  { '<C-j>', '<Esc>o' },
+  { '<C-k>', '<Esc>O' },
   { '<C-a>', '<Esc>^i' },
   { '<C-s>', '<ESC>:w<CR>' },
   {

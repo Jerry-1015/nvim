@@ -56,4 +56,11 @@ function config.telescope()
   require('telescope').load_extension('file_browser')
 end
 
+function config.hop()
+  local hop = require('hop')
+  hop.setup({
+    keys = 'etovxqpdygfblzhckisuran',
+  })
+end
+
 return config

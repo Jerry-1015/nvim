@@ -1,12 +1,12 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2022/12/28 22:03:06
+-- @last modified   2023/1/5 22:35:21
 ---------------------------------------------
 
 package.path = package.path .. ";" .. vim.fn.stdpath('config') .. '/snippets/?.lua'
 
-local ls = require("helper")
+local ls = require("utils")
 local s = ls.s --> snippet
 local i = ls.i --> insert node
 local t = ls.t --> text node
@@ -130,7 +130,6 @@ end
 cs({ trig = 'd([0-9a-zA-Z_]+)f ', regTrig = true, wordTrig = false }, fmt([[
 {}
 {} {}({}){};
-
 {}
 ]], {
   d(4, fn, 2),
@@ -154,7 +153,6 @@ cs({ trig = '([0-9a-zA-Z_]+)fn ', regTrig = true, wordTrig = false }, fmt([[
 {} {}({}) {}{{
   {}
 }}
-
 {}
 ]], {
   f(function(_, snip) return snip.captures[1] end),
@@ -180,7 +178,6 @@ class {} {{
 {}
   {}
 }};
-
 {}
 ]],
 {
@@ -199,7 +196,6 @@ cs('st ', fmt([[
 struct {} {{
   {}
 }};
-
 {}
 ]],
 {
