@@ -1,7 +1,7 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2022/12/28 22:54:15
+-- @last modified   2023/1/6 14:46:47
 ---------------------------------------------
 
 local ls = {}
@@ -28,9 +28,11 @@ ls.file_pattern = "*"
 
 -- custom snippet
 ls.cs = function(trigger, nodes, opts)
-  local snippet = ls.s(trigger, nodes)
+  local snippet = nil
   if opts ~= nil and opts.snip_opts then
     snippet = ls.s(trigger, nodes, opts.snip_opts)
+  else
+    snippet = ls.s(trigger, nodes)
   end
 
   local target_table = ls.snippets
@@ -81,7 +83,6 @@ ls.cs = function(trigger, nodes, opts)
   end
 
   table.insert(target_table, snippet)
-
 end
 
 -- autocmds

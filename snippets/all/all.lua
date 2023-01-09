@@ -28,7 +28,6 @@ local ac = ls.ac
 ls.snippets = {}
 ls.autosnippets = {}
 
-vim.notify(tostring(type(t) == "function"))
 ls.group = vim.api.nvim_create_augroup("Lua Snippets", { clear = true })
 ls.file_pattern = "*.lua"
 

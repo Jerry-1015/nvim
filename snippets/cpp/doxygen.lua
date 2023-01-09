@@ -1,7 +1,7 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2023/1/5 22:35:21
+-- @last modified   2023/1/7 8:21:37
 ---------------------------------------------
 
 package.path = package.path .. ";" .. vim.fn.stdpath('config') .. '/snippets/?.lua'
@@ -121,9 +121,14 @@ local function fn(args)
     end
   end
 
-
   vim.list_extend(nodes, { t('* @return '), r(insert, 'ret', i(1)), t({ '', '*/' }) })
   return sn(nil, nodes)
+end
+
+-- expand functiion snip condition
+local fn_condition = function()
+  local current_line = vim.api.nvim_get_current_line()
+  return current_line:match('^%s*d[0-9a-zA-Z_]+f $') ~= nil
 end
 
 -- declare function
@@ -137,7 +142,7 @@ cs({ trig = 'd([0-9a-zA-Z_]+)f ', regTrig = true, wordTrig = false }, fmt([[
   i(1, ''),
   i(2, ''),
   c(3, {
-    t(''),
+    i(1),
     t(' const'),
     t(' override'),
     t(' = delete'),
@@ -146,7 +151,7 @@ cs({ trig = 'd([0-9a-zA-Z_]+)f ', regTrig = true, wordTrig = false }, fmt([[
     t(' &&'),
     t(' const &'), }),
   i(0),
-}), { auto = true })
+}), { snip_opts = { condition = fn_condition }, auto = true })
 
 -- define function
 cs({ trig = '([0-9a-zA-Z_]+)fn ', regTrig = true, wordTrig = false }, fmt([[
@@ -170,7 +175,7 @@ cs({ trig = '([0-9a-zA-Z_]+)fn ', regTrig = true, wordTrig = false }, fmt([[
 }), { auto = true })
 
 -- class
-cs('cs ', fmt([[
+cs('classs', fmt([[
 /**
 * @brief {}
 */
@@ -186,10 +191,10 @@ class {} {{
   c(3, { t('public:'), t('protected:'), t('private:') }),
   i(4, '// TODO:'),
   i(0),
-}), { auto = true })
+}), { auto = false })
 
 -- struct
-cs('st ', fmt([[
+cs('struct', fmt([[
 /**
 * @brief {}
 */
@@ -203,7 +208,7 @@ struct {} {{
   i(2),
   i(3, '// TODO:'),
   i(0),
-}), { auto = true })
+}), { auto = false })
 
 -- variable comment
 cs('vc ', fmt([[
@@ -227,8 +232,8 @@ local is_comment_env = function()
   end
 end
 
-cs({ trig = "de" },
+cs({ trig = "detail" },
   { t("@detail "), i(1) },
-  { snip_opt = { condition = is_comment_env }, auto = true })
+  { snip_opts = { condition = is_comment_env } })
 
 return ls.snippets, ls.autosnippets

@@ -80,6 +80,10 @@ _G.smart_q = function()
     return '<Esc>'
   end
 
+  if filetype == 'dashboard' then
+    return '<cmd>q<CR>'
+  end
+
   local tabpage_num = #vim.api.nvim_list_wins()
   if (tabpage_num > 1) then
     return '<C-w>'

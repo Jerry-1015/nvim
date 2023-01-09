@@ -33,6 +33,9 @@ nmap({
   { '<C-l>', '<C-w>l' },
   { '<C-j>', '<C-w>j' },
   { '<C-k>', '<C-w>k' },
+  { '<C-[>', '<C-w>r' },
+  { '<C-]>', '<C-w>R' },
+  { '<C-x>', '<C-w>x' },
   -- resize window
   { '<A-[>', cmd('vertical resize -5') },
   { '<A-]>', cmd('vertical resize +5') },

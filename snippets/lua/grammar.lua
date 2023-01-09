@@ -1,7 +1,7 @@
 ---------------------------------------------
 -- @author          Jerry
 -- @create          2022/12/24 0:14:34
--- @last modified   2023/1/5 19:43:15
+-- @last modified   2023/1/9 10:33:33
 ---------------------------------------------
 
 -- add search path
@@ -59,6 +59,8 @@ cs("info", fmt([[
 -- @create          {}
 -- @last modified   {}
 ---------------------------------------------
+
+{}
 ]], {
   f(function()
     return os.date()
@@ -66,6 +68,7 @@ cs("info", fmt([[
   f(function()
     return os.date()
   end),
+  i(0),
 }), { auto = true })
 
 cs('function', fmt([[
@@ -77,5 +80,14 @@ end{}
   i(1),
   i(0),
 }))
+
+local is_even_line = function()
+  local line_number = vim.fn['line']('.')
+  if ((line_number % 2) == 0) then
+    return true
+  else
+    return false
+  end
+end
 
 return ls.snippets, ls.autosnippets

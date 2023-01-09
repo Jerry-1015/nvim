@@ -50,7 +50,7 @@ nmap({
   { 'gh', cmd('Lspsaga lsp_finder') },
   { '<Leader>o', cmd('Lspsaga outline') },
   { '<Leader>g', cmd('Lspsaga open_floaterm pwsh') },
-  { 'fm', 'gg=G<C-o>', opts(noremap, silent) },
+  { '<Leader>fm', 'gg=G<C-o>', opts(noremap, silent) },
   -- dashboard
   { '<Leader>n', cmd('DashboardNewFile'), opts(noremap, silent) },
   { '<Leader>ss', cmd('SessionSave'), opts(noremap, silent) },
@@ -76,10 +76,12 @@ nmap({
   { '<Leader>fc', cmd('Telescope git_commits'), opts(noremap, silent) },
   { '<Leader>fl', cmd('Telescope live_grep'), opts(noremap, silent) },
   -- cmake source
-  { '<Leader><Leader>s', cmd('!cmake -S . -B build'), opts(noremap) },
-  -- { '<Leader><Leader>s', cmd('!cmake -S . -B build -G Ninja'), opts(noremap) },
+  -- { '<Leader><Leader>s', cmd('!cmake -S . -B build'), opts(noremap) },
+  { '<Leader><Leader>s', cmd('!cmake -S . -B build -G Ninja'), opts(noremap) },
   -- cmake build
   { '<Leader><Leader>b', cmd('!cmake --build build -j2'), opts(noremap) },
+  -- cmake run
+  { '<Leader><Leader>r', cmd('!cmake --build build --target run'), opts(noremap) },
   -- cmake test
   { '<Leader><Leader>t', cmd('!cmake --build build -j2 --target test'), opts(noremap) },
   -- hop.nvim
